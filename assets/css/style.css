@@ -21,10 +21,31 @@
   position: relative;
 }
 
+/* Home main */
+.quiz-start h1 {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 60px;
+}
+
+.quiz-start p {
+  margin: 25px 100px 0 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
 .container-main h2 {
   font-size: 50px;
   text-align: center;
   margin-top: 30px;
+}
+
+.start-btn {
+  width: 20%;
+  height: 40px;
+  margin: 20px auto;
+  display: block;
+  font-size: 20px;
 }
 
 /* buttons */
@@ -54,7 +75,7 @@ main hr {
   bottom: 90px;
   width: 100%;
 }
-main p {
+.answer {
   align-items: flex-end;
   position: absolute;
   bottom: 40px;
