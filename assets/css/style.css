@@ -3,9 +3,61 @@
   padding: 0;
 }
 
+/* nav style */
+
 .nav {
   display: flex;
   justify-content: space-between;
   margin: 30px 30px 0 30px;
   font-size: 36px;
+}
+
+/* main */
+
+.container-main {
+  margin: 40px 40px 0 40px;
+  border: 3px solid black;
+  height: 70vh;
+  position: relative;
+}
+
+.container-main h2 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* buttons */
+
+.container-btn {
+  margin: 30px 30px 0px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-child {
+  flex: 50%;
+}
+
+.btn-child button {
+  height: 70px;
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+  font-size: 30px;
+}
+
+/* correct/wrong */
+
+main hr {
+  position: absolute;
+  bottom: 90px;
+  width: 100%;
+}
+main p {
+  align-items: flex-end;
+  position: absolute;
+  bottom: 40px;
+  font-size: 30px;
+  margin-left: 50px;
 }
