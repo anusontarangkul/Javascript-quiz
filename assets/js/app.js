@@ -7,7 +7,7 @@ const questions = [
         choice2: "boolean",
         choice3: "dictionary",
         choice4: "string",
-        answer: 1
+        answer: "dictionary"
     },
     {
         question: "Which one of these keywords does NOT declare a new variable in JavaScript?",
@@ -67,7 +67,7 @@ const startQuiz = () => {
     // remove start page
     toggleStart();
     // toggleQuestion();
-    createQuestion(questions);
+    createQuestion(questions[questionCounter]);
 
 
     // load questions page
@@ -96,37 +96,80 @@ const toggleQuestion = () => {
 }
 
 const createQuestion = (q) => {
-    if (questionCounter === questions.length) {
+    if (questionCounter === questions.length - 1) {
         endgame();
+
     }
+    containerMainEL.innerHTML = "";
     let questionContainer = document.createElement("div");
-    questionContainer.innerHTML = `<h2>${q[questionCounter].question}<h2/>    
+    questionContainer.innerHTML = `<h2>${q.question}<h2/>    
  
     <div class="container-btn">
       <div class="btn-child">
-        <button>${q[questionCounter].choice1}</button>
+        <button>${q.choice1}</button>
       </div>
       <div class="btn-child">
-        <button>${q[questionCounter].choice2}</button>
+        <button>${q.choice2}</button>
       </div>
       <div class="btn-child">
-        <button>${q[questionCounter].choice3}</button>
+        <button>${q.choice3}</button>
       </div>
       <div class="btn-child">
-        <button>${q[questionCounter].choice4}</button>
+        <button>${q.choice4}</button>
       </div>
     </div>
-    <hr />
-    <p class="answer">Correct</p> 
 
 `;
     containerMainEL.append(questionContainer);
 
+    // const checkAnswer = (req) => {
+    //     console.log("test")
+    // }
 
+
+    const choice = document.getElementsByTagName("button");
+    for (let i = 0; i < choice.length; i++) {
+        choice[i].addEventListener("click", function () {
+            let answer = choice[i].textContent;
+
+            if (answer === q.answer) {
+                let correctAnswer = document.createElement("div");
+                correctAnswer.innerHTML = `<hr />
+                                            <p class="answer">Correct</p>`
+
+                questionContainer.append(correctAnswer);
+                questionCounter++;
+                if (questionCounter === questions.length - 1) {
+                    endgame();
+
+                } else {
+                    // createQuestion(questions[questionCounter]);
+                }
+
+            } else {
+                let wrongAnswer = document.createElement("div");
+                wrongAnswer.innerHTML = `<hr />
+                                            <p class="answer">Wrong</p>`
+                questionContainer.append(wrongAnswer);
+                questionCounter++;
+                if (questionCounter === questions.length - 1) {
+                    endgame();
+
+                } else {
+                    // createQuestion(questions[questionCounter]);
+                }
+
+
+            }
+        })
+    }
 }
 
 const endgame = () => {
-
+    console.log("game over")
 }
 
+const newQuestion = () => {
+    createQuestion(questions[questionCounter]);
+}
 startBtnEL.addEventListener("click", startQuiz);
