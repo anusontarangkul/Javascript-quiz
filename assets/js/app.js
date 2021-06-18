@@ -15,7 +15,7 @@ const questions = [
         choice2: "let",
         choice3: "const",
         choice4: "def",
-        answer: 4
+        answer: "def"
     },
     {
         question: "Which one of these data types is a reference value",
@@ -23,7 +23,7 @@ const questions = [
         choice2: "symbol",
         choice3: "string",
         choice4: "boolean",
-        answer: 1
+        answer: "object"
     },
     {
         question: "Who created JavaScript?",
@@ -31,7 +31,7 @@ const questions = [
         choice2: "Netscape",
         choice3: "Sun Microsystems",
         choice4: "Oracle",
-        answer: 3
+        answer: "Netscape"
     },
     {
         question: "Which of the following is not a reserved word in JavaScript?",
@@ -39,7 +39,7 @@ const questions = [
         choice2: "finally",
         choice3: "throw",
         choice4: "undefined",
-        answer: 1
+        answer: "undefined"
     },
     {
         question: "Which method removes the last element from an array and returns that element",
@@ -47,7 +47,7 @@ const questions = [
         choice2: "pop()",
         choice3: "push()",
         choice4: "Concat()",
-        answer: 2
+        answer: "pop()"
     },
 
 
@@ -139,12 +139,10 @@ const createQuestion = (q) => {
 
                 questionContainer.append(correctAnswer);
                 questionCounter++;
-                if (questionCounter === questions.length - 1) {
-                    endgame();
-
-                } else {
-                    // createQuestion(questions[questionCounter]);
+                for (let j = 0; j < choice.length; j++) {
+                    choice[j].disabled = true;
                 }
+                nextButton();
 
             } else {
                 let wrongAnswer = document.createElement("div");
@@ -152,12 +150,11 @@ const createQuestion = (q) => {
                                             <p class="answer">Wrong</p>`
                 questionContainer.append(wrongAnswer);
                 questionCounter++;
-                if (questionCounter === questions.length - 1) {
-                    endgame();
-
-                } else {
-                    // createQuestion(questions[questionCounter]);
+                for (let j = 0; j < choice.length; j++) {
+                    choice[j].disabled = true;
                 }
+
+                nextButton();
 
 
             }
@@ -172,4 +169,22 @@ const endgame = () => {
 const newQuestion = () => {
     createQuestion(questions[questionCounter]);
 }
+
+const nextButton = () => {
+    if (questionCounter === questions.length) {
+        endgame();
+    } else {
+        let nextbtn = document.createElement("button");
+        nextbtn.textContent = "Next";
+        nextbtn.setAttribute("id", "next")
+        containerMainEL.append(nextbtn);
+        const nextBtnEL = document.getElementById("next");
+        nextBtnEL.addEventListener("click", function () {
+            createQuestion(questions[questionCounter])
+        })
+
+    }
+
+}
+
 startBtnEL.addEventListener("click", startQuiz);
