@@ -1,5 +1,5 @@
 // JS Questions and choices
-
+let questionCounter = 0;
 const questions = [
     {
         question: "Which one of these keywords is NOT a JavaScript data type?",
@@ -56,3 +56,77 @@ const questions = [
 
 console.log(questions)
 
+const startBtnEL = document.getElementById("start-btn");
+const quizStartEL = document.getElementById("quiz-start");
+const quizPageEL = document.getElementById("quiz-page");
+const containerMainEL = document.getElementById("container-main");
+
+// begin quiz
+
+const startQuiz = () => {
+    // remove start page
+    toggleStart();
+    // toggleQuestion();
+    createQuestion(questions);
+
+
+    // load questions page
+}
+
+
+const toggleStart = () => {
+    if (quizStartEL.style.display === "none") {
+        quizStartEL.style.display = null;
+    } else {
+        quizStartEL.style.display = "none";
+    }
+}
+
+const toggleQuestion = () => {
+    quizPageEL.style.display = null;
+
+    // console.log(quizPageEL.style)
+    // if (quizPageEL.style.display === null) {
+    //     console.log("test")
+    //     quizPageEL.style.display = null;
+    // } else {
+    //     quizPageEL.style.display = "visible";
+
+    // }
+}
+
+const createQuestion = (q) => {
+    if (questionCounter === questions.length) {
+        endgame();
+    }
+    let questionContainer = document.createElement("div");
+    questionContainer.innerHTML = `<h2>${q[questionCounter].question}<h2/>    
+ 
+    <div class="container-btn">
+      <div class="btn-child">
+        <button>${q[questionCounter].choice1}</button>
+      </div>
+      <div class="btn-child">
+        <button>${q[questionCounter].choice2}</button>
+      </div>
+      <div class="btn-child">
+        <button>${q[questionCounter].choice3}</button>
+      </div>
+      <div class="btn-child">
+        <button>${q[questionCounter].choice4}</button>
+      </div>
+    </div>
+    <hr />
+    <p class="answer">Correct</p> 
+
+`;
+    containerMainEL.append(questionContainer);
+
+
+}
+
+const endgame = () => {
+
+}
+
+startBtnEL.addEventListener("click", startQuiz);
