@@ -163,6 +163,18 @@ const createQuestion = (q) => {
 }
 
 const endgame = () => {
+    containerMainEL.innerHTML = "";
+    let endGame = document.createElement("div");
+    endGame.innerHTML = `<h2>Game Over!</h2>
+                        <p>Your score is 99 </p>
+                        <button id="restart">Play Again</button>`
+    containerMainEL.append(endGame)
+    const restartBtnEL = document.getElementById("restart");
+    restartBtnEL.addEventListener("click", function () {
+        questionCounter = 0;
+        startQuiz();
+
+    })
     console.log("game over")
 }
 
