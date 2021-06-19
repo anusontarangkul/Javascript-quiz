@@ -1,5 +1,6 @@
 // JS Questions and choices
 let questionCounter = 0;
+
 const questions = [
     {
         question: "Which one of these keywords is NOT a JavaScript data type?",
@@ -53,17 +54,40 @@ const questions = [
 
 
 ]
+let startTimerCount = 99;
 
-console.log(questions)
 
 const startBtnEL = document.getElementById("start-btn");
 const quizStartEL = document.getElementById("quiz-start");
 const quizPageEL = document.getElementById("quiz-page");
 const containerMainEL = document.getElementById("container-main");
+const timeEL = document.getElementById("time");
 
 // begin quiz
 
 const startQuiz = () => {
+    startTimerCount = 99;
+
+    window.timer =
+        setInterval(function () {
+            if (startTimerCount <= 0) {
+                clearInterval(window.timer);
+                endGame();
+            }
+            timeEL.textContent = `Time: ${startTimerCount}`;
+            startTimerCount--;
+
+        }, 1000);
+    // timer 
+    // const timer = setInterval(function () {
+    //     if (startTimerCount <= 0) {
+
+    //         endGame();
+    //     }
+    //     timeEL.textContent = `Time: ${startTimerCount}`;
+    //     startTimerCount--;
+
+    // }, 1000);
     // remove start page
     toggleStart();
     // toggleQuestion();
@@ -96,10 +120,10 @@ const toggleQuestion = () => {
 }
 
 const createQuestion = (q) => {
-    if (questionCounter === questions.length - 1) {
-        endgame();
+    // if (questionCounter === questions.length - 1) {
+    //     endGame();
 
-    }
+    // }
     containerMainEL.innerHTML = "";
     let questionContainer = document.createElement("div");
     questionContainer.innerHTML = `<h2>${q.question}<h2/>    
@@ -153,7 +177,8 @@ const createQuestion = (q) => {
                 for (let j = 0; j < choice.length; j++) {
                     choice[j].disabled = true;
                 }
-
+                startTimerCount = Math.max(0, startTimerCount - 10);
+                timeEL.textContent = `Time: ${startTimerCount}`;
                 nextButton();
 
 
@@ -162,11 +187,13 @@ const createQuestion = (q) => {
     }
 }
 
-const endgame = () => {
+const endGame = () => {
+
     containerMainEL.innerHTML = "";
     let endGame = document.createElement("div");
+    endGame.setAttribute("id", "end-page")
     endGame.innerHTML = `<h2>Game Over!</h2>
-                        <p>Your score is 99 </p>
+                        <p>Your score is <b>${startTimerCount}</b> </p>
                         <button id="restart">Play Again</button>`
     containerMainEL.append(endGame)
     const restartBtnEL = document.getElementById("restart");
@@ -175,7 +202,7 @@ const endgame = () => {
         startQuiz();
 
     })
-    console.log("game over")
+
 }
 
 const newQuestion = () => {
@@ -184,7 +211,14 @@ const newQuestion = () => {
 
 const nextButton = () => {
     if (questionCounter === questions.length) {
-        endgame();
+        clearInterval(window.timer)
+        let finishbtn = document.createElement("button");
+        finishbtn.textContent = "Finished";
+        finishbtn.setAttribute("id", "finish")
+        containerMainEL.append(finishbtn);
+        const finishtBtnEL = document.getElementById("finish");
+        finishtBtnEL.addEventListener("click", endGame)
+
     } else {
         let nextbtn = document.createElement("button");
         nextbtn.textContent = "Next";
@@ -199,4 +233,13 @@ const nextButton = () => {
 
 }
 
+
+
+
+
+
+// const countdown = (startTimerCount) => {
+//     timeEL.textContent = `Time: ${startTimerCount}`;
+//     startTimerCount--;
+// }
 startBtnEL.addEventListener("click", startQuiz);

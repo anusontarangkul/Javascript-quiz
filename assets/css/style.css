@@ -83,7 +83,40 @@ main hr {
 .answer {
   align-items: flex-end;
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   font-size: 30px;
   margin-left: 50px;
+}
+
+/* next button */
+#next {
+  position: absolute;
+  bottom: 28px;
+  right: 40px;
+  height: 40px;
+  width: 110px;
+  font-size: 20px;
+}
+
+/* end page */
+#end-page {
+  text-align: center;
+  margin-top: 160px;
+}
+
+#end-page h2 {
+  font-size: 80px;
+}
+
+#end-page p {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+#end-page button {
+  width: 130px;
+  height: 40px;
+  margin: 20px auto;
+  display: block;
+  font-size: 20px;
 }
