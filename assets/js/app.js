@@ -205,7 +205,7 @@ const endGame = () => {
     const intialsValueEL = document.getElementById("entered-initials");
     enterInitialsEL.addEventListener("submit", function () {
         event.preventDefault();
-        let initials = intialsValueEL.value;
+        let initials = intialsValueEL.value.toUpperCase();
         if (initials.length > 2) {
             alert("Initials can only be 2 characters. Try again.");
             intialsValueEL.value = "";
@@ -254,9 +254,6 @@ const nextButton = () => {
 
 }
 
-const saveScore = (score) => {
-    let currentHighScore
-}
 
 
 
