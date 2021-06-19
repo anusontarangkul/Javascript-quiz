@@ -67,6 +67,7 @@ const timeEL = document.getElementById("time");
 
 const startQuiz = () => {
     startTimerCount = 99;
+    timeEL.textContent = `Time: ${startTimerCount}`
 
     window.timer =
         setInterval(function () {
@@ -196,22 +197,24 @@ const endGame = () => {
                         <p>Your score is <b>${startTimerCount}</b> </p>
                         <form id="enter-initials">
                             <label for="initial">Enter Initials:</label>
-                            <input id="entered-initials" type="text" autocomplet="off">
+                            <input id="entered-initials" type="text" autocomplete="off">
                             <input type="submit" value="Submit">
                         </form>
                         <button id="restart">Play Again</button>`
     containerMainEL.append(endGame);
     const enterInitialsEL = document.getElementById("enter-initials");
     const intialsValueEL = document.getElementById("entered-initials");
+    const submitEL = document.querySelector("input[type=text]");
     enterInitialsEL.addEventListener("submit", function () {
         event.preventDefault();
         let initials = intialsValueEL.value.toUpperCase();
-        if (initials.length > 2) {
-            alert("Initials can only be 2 characters. Try again.");
+        if (initials.length !== 2) {
+            alert("Initials must be 2 characters. Try again.");
             intialsValueEL.value = "";
         } else {
             localStorage.setItem(initials, startTimerCount);
             intialsValueEL.value = "";
+            submitEL.disabled = true;
         }
 
     })
