@@ -89,7 +89,16 @@ main hr {
 }
 
 /* next button */
-#next {
+/* #next {
+  position: absolute;
+  bottom: 28px;
+  right: 40px;
+  height: 40px;
+  width: 110px;
+  font-size: 20px;
+} */
+
+.continue-btn {
   position: absolute;
   bottom: 28px;
   right: 40px;
@@ -119,4 +128,23 @@ main hr {
   margin: 20px auto;
   display: block;
   font-size: 20px;
+}
+
+#enter-initials {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+#enter-initials input[type='text'] {
+  width: 130px;
+  height: 25px;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+#enter-initials input[type='submit'] {
+  width: 80px;
+  height: 28px;
+  font-size: 16px;
+  vertical-align: middle;
 }

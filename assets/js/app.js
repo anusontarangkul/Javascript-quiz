@@ -19,7 +19,7 @@ const questions = [
         answer: "def"
     },
     {
-        question: "Which one of these data types is a reference value",
+        question: "Which one of these data types is a reference value?",
         choice1: "object",
         choice2: "symbol",
         choice3: "string",
@@ -43,7 +43,7 @@ const questions = [
         answer: "undefined"
     },
     {
-        question: "Which method removes the last element from an array and returns that element",
+        question: "Which method removes the last element from an array and returns that element?",
         choice1: "forEach()",
         choice2: "pop()",
         choice3: "push()",
@@ -194,8 +194,27 @@ const endGame = () => {
     endGame.setAttribute("id", "end-page")
     endGame.innerHTML = `<h2>Game Over!</h2>
                         <p>Your score is <b>${startTimerCount}</b> </p>
+                        <form id="enter-initials">
+                            <label for="initial">Enter Initials:</label>
+                            <input id="entered-initials" type="text" autocomplet="off">
+                            <input type="submit" value="Submit">
+                        </form>
                         <button id="restart">Play Again</button>`
-    containerMainEL.append(endGame)
+    containerMainEL.append(endGame);
+    const enterInitialsEL = document.getElementById("enter-initials");
+    const intialsValueEL = document.getElementById("entered-initials");
+    enterInitialsEL.addEventListener("submit", function () {
+        event.preventDefault();
+        let initials = intialsValueEL.value;
+        if (initials.length > 2) {
+            alert("Initials can only be 2 characters. Try again.");
+            intialsValueEL.value = "";
+        } else {
+            localStorage.setItem(initials, startTimerCount);
+            intialsValueEL.value = "";
+        }
+
+    })
     const restartBtnEL = document.getElementById("restart");
     restartBtnEL.addEventListener("click", function () {
         questionCounter = 0;
@@ -214,7 +233,8 @@ const nextButton = () => {
         clearInterval(window.timer)
         let finishbtn = document.createElement("button");
         finishbtn.textContent = "Finished";
-        finishbtn.setAttribute("id", "finish")
+        finishbtn.setAttribute("id", "finish");
+        finishbtn.setAttribute("class", "continue-btn");
         containerMainEL.append(finishbtn);
         const finishtBtnEL = document.getElementById("finish");
         finishtBtnEL.addEventListener("click", endGame)
@@ -222,7 +242,8 @@ const nextButton = () => {
     } else {
         let nextbtn = document.createElement("button");
         nextbtn.textContent = "Next";
-        nextbtn.setAttribute("id", "next")
+        nextbtn.setAttribute("id", "next");
+        nextbtn.setAttribute("class", "continue-btn");
         containerMainEL.append(nextbtn);
         const nextBtnEL = document.getElementById("next");
         nextBtnEL.addEventListener("click", function () {
@@ -233,7 +254,9 @@ const nextButton = () => {
 
 }
 
-
+const saveScore = (score) => {
+    let currentHighScore
+}
 
 
 
