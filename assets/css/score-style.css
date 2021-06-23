@@ -15,3 +15,12 @@ h1 {
   font-size: 40px;
   line-height: 1.5;
 }
+
+body {
+  background-color: #bbf1f1;
+}
+
+.high-score {
+  margin: 30px 30px 0 30px;
+  font-size: 36px;
+}

@@ -1,15 +1,6 @@
 const scoreContainerEL = document.getElementById("score-container");
-console.log(typeof localStorage)
-// for (let key in localStorage) {
-//     console.log("key")
-//     console.log(key)
-//     console.log("value")
-//     console.log(localStorage[key])
-// }
 
 let orderedScores = [];
-
-
 
 for (let i = 0, len = localStorage.length; i < len; ++i) {
     let initial = localStorage.key(i);
@@ -30,4 +21,3 @@ for (let initial of orderedScores) {
 }
 
 
-console.log(orderedScores)

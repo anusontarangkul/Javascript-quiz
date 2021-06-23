@@ -79,23 +79,9 @@ const startQuiz = () => {
             startTimerCount--;
 
         }, 1000);
-    // timer 
-    // const timer = setInterval(function () {
-    //     if (startTimerCount <= 0) {
 
-    //         endGame();
-    //     }
-    //     timeEL.textContent = `Time: ${startTimerCount}`;
-    //     startTimerCount--;
-
-    // }, 1000);
-    // remove start page
     toggleStart();
-    // toggleQuestion();
     createQuestion(questions[questionCounter]);
-
-
-    // load questions page
 }
 
 
@@ -107,24 +93,10 @@ const toggleStart = () => {
     }
 }
 
-const toggleQuestion = () => {
-    quizPageEL.style.display = null;
 
-    // console.log(quizPageEL.style)
-    // if (quizPageEL.style.display === null) {
-    //     console.log("test")
-    //     quizPageEL.style.display = null;
-    // } else {
-    //     quizPageEL.style.display = "visible";
-
-    // }
-}
 
 const createQuestion = (q) => {
-    // if (questionCounter === questions.length - 1) {
-    //     endGame();
 
-    // }
     containerMainEL.innerHTML = "";
     let questionContainer = document.createElement("div");
     questionContainer.innerHTML = `<h2>${q.question}<h2/>    
@@ -147,11 +119,6 @@ const createQuestion = (q) => {
 `;
     containerMainEL.append(questionContainer);
 
-    // const checkAnswer = (req) => {
-    //     console.log("test")
-    // }
-
-
     const choice = document.getElementsByTagName("button");
     for (let i = 0; i < choice.length; i++) {
         choice[i].addEventListener("click", function () {
@@ -160,7 +127,7 @@ const createQuestion = (q) => {
             if (answer === q.answer) {
                 let correctAnswer = document.createElement("div");
                 correctAnswer.innerHTML = `<hr />
-                                            <p class="answer">Correct</p>`
+                                            <p class="answer correct">Correct</p>`
 
                 questionContainer.append(correctAnswer);
                 questionCounter++;
@@ -172,7 +139,7 @@ const createQuestion = (q) => {
             } else {
                 let wrongAnswer = document.createElement("div");
                 wrongAnswer.innerHTML = `<hr />
-                                            <p class="answer">Wrong</p>`
+                                            <p class="answer wrong">Wrong</p>`
                 questionContainer.append(wrongAnswer);
                 questionCounter++;
                 for (let j = 0; j < choice.length; j++) {
@@ -258,11 +225,6 @@ const nextButton = () => {
 }
 
 
-
-
-
-// const countdown = (startTimerCount) => {
-//     timeEL.textContent = `Time: ${startTimerCount}`;
-//     startTimerCount--;
-// }
 startBtnEL.addEventListener("click", startQuiz);
+
+module.exports(nextButton)

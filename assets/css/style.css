@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  background-color: #bbf1f1;
+}
+
 /* nav style */
 
 .nav {
@@ -19,6 +23,7 @@
   border: 3px solid black;
   height: 70vh;
   position: relative;
+  background-color: #e9dfd4;
 }
 
 /* Home main */
@@ -75,6 +80,13 @@
 
 /* correct/wrong */
 
+.correct {
+  color: green;
+}
+
+.wrong {
+  color: red;
+}
 main hr {
   position: absolute;
   bottom: 90px;
@@ -87,16 +99,6 @@ main hr {
   font-size: 30px;
   margin-left: 50px;
 }
-
-/* next button */
-/* #next {
-  position: absolute;
-  bottom: 28px;
-  right: 40px;
-  height: 40px;
-  width: 110px;
-  font-size: 20px;
-} */
 
 .continue-btn {
   position: absolute;
