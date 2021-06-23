@@ -227,4 +227,3 @@ const nextButton = () => {
 
 startBtnEL.addEventListener("click", startQuiz);
 
-module.exports(nextButton)
